@@ -1,6 +1,7 @@
 package com.kevin.jdbc.samples;
 
 import com.kevin.jdbc.samples.configuration.ApplicationConfiguration;
+import com.kevin.jdbc.samples.repository.domain.entity.UserEntity;
 import com.kevin.jdbc.samples.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -18,5 +19,8 @@ public class Application {
 
         UserService userService = annotationApplicationContext.getBean(UserService.class);
         Logger.getGlobal().info("userService:" + userService);
+
+        userService.save(new UserEntity());
+
     }
 }
