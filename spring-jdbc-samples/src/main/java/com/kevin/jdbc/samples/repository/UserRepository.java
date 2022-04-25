@@ -1,12 +1,12 @@
 package com.kevin.jdbc.samples.repository;
 
 import com.kevin.jdbc.samples.repository.domain.entity.UserEntity;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author kevin
  */
+@Repository
 public interface UserRepository {
 
 
