@@ -1,0 +1,5 @@
+#h2 settings
+datasource.driverClassName=org.h2.Driver
+datasource.url=jdbc:h2:mem:transaction_db;MODE=MySQL;DB_CLOSE_DELAY=-1;
+datasource.username=admin
+datasource.password=1234
