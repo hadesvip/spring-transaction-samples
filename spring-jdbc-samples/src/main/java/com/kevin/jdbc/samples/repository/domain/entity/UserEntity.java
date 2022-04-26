@@ -14,6 +14,16 @@ public class UserEntity {
     private String email;
 
 
+    public UserEntity() {
+    }
+
+    public UserEntity(String userId, String userName, String phoneNumber, String email) {
+        this.userId = userId;
+        this.userName = userName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
     public String getUserId() {
         return userId;
     }

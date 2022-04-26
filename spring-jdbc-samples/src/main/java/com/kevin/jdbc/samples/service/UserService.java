@@ -13,4 +13,7 @@ public interface UserService {
      */
     void save(UserEntity user);
 
+
+    UserEntity queryByUserId(String userId);
+
 }

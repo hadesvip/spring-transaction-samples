@@ -20,7 +20,10 @@ public class Application {
         UserService userService = annotationApplicationContext.getBean(UserService.class);
         Logger.getGlobal().info("userService:" + userService);
 
-        userService.save(new UserEntity());
+        userService.save(new UserEntity("001", "admin",
+                "13584040989", "admin@126.com"));
+        UserEntity userEntity = userService.queryByUserId("001");
+        Logger.getGlobal().info("检索结果:" + userEntity);
 
     }
 }
