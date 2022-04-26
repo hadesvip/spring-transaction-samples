@@ -31,10 +31,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(UserEntity user) {
         Logger.getGlobal().info("【保存用户信息】用户信息:" + user);
+        jdbcTemplate.execute("DROP TABLE IF EXISTS t_user");
+        jdbcTemplate.execute("CREATE TABLE t_user(user_id INTEGER PRIMARY KEY," +
+                " user_name VARCHAR(32)," +
+                " phone_number VARCHAR(11)," +
+                "email VARCHAR(64))");
+
         int rowNum =
-                jdbcTemplate.update("insert into t_user(user_id , user_name, phone_number, email) value(?,?,?,?)",
+                jdbcTemplate.update("insert into t_user(user_id , user_name, phone_number, email) values(?,?,?,?)",
                         new Object[]{user.getUserId(), user.getUserName(), user.getPhoneNumber(), user.getEmail()},
-                        new int[]{Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR});
+                        new int[]{Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR});
         Logger.getGlobal().info("影响行数:" + rowNum);
 
     }
