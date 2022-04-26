@@ -42,12 +42,14 @@ public final class DBConnUtils {
         try {
             Class.forName(DRIVER_CLASS);
             connection = DriverManager.getConnection(JDBC_URL, USER_NAME, PASSWORD);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         return connection;
     }
 
-
+    /**
+     * 手动开启事务
+     */
     public static void startTransaction() throws SQLException {
         if (connection != null && !connection.getAutoCommit()) {
             connection.setAutoCommit(false);
@@ -77,13 +79,12 @@ public final class DBConnUtils {
     /**
      * 关闭数据库链接
      *
-     * @return
      */
     public static void close() {
         if (connection != null) {
             try {
                 connection.close();
-            } catch (SQLException e) {
+            } catch (SQLException ignored) {
             }
         }
     }
