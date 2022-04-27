@@ -7,6 +7,7 @@
     <version>1.0</version>
     <modules>
         <module>spring-jdbc-samples</module>
+      <module>spring-mybatis-samples</module>
     </modules>
     <packaging>pom</packaging>
     <name>spring-transaction-samples</name>
