@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * @author kevin
  */
-public final class DBConnUtils {
+public final class DatabaseConnectionUtils {
 
     /**
      * 数据库地址
