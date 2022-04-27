@@ -1,6 +1,6 @@
-package com.kevin.jdbc.samples.service;
+package com.kevin.jdbc.samples.moudles.user.service;
 
-import com.kevin.jdbc.samples.repository.domain.entity.UserEntity;
+import com.kevin.jdbc.samples.moudles.user.repository.domain.entity.UserEntity;
 
 /**
  * @author kevin

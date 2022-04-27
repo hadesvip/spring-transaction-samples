@@ -1,16 +1,12 @@
-package com.kevin.jdbc.samples.service.impl;
+package com.kevin.jdbc.samples.moudles.user.service.impl;
 
-import com.kevin.jdbc.samples.repository.domain.entity.UserEntity;
-import com.kevin.jdbc.samples.service.UserService;
-import org.springframework.dao.DataAccessException;
+import com.kevin.jdbc.samples.moudles.user.repository.domain.entity.UserEntity;
+import com.kevin.jdbc.samples.moudles.user.service.UserService;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Types;
 import java.util.logging.Logger;
 
@@ -18,7 +14,7 @@ import java.util.logging.Logger;
  * @author kevin
  */
 @Service
-@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+@Transactional(propagation = Propagation.REQUIRED,rollbackFor = {Exception.class})
 public class UserServiceImpl implements UserService {
 
     private final JdbcTemplate jdbcTemplate;

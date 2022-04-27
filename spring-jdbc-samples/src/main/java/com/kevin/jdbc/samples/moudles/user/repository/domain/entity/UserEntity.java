@@ -1,4 +1,4 @@
-package com.kevin.jdbc.samples.repository.domain.entity;
+package com.kevin.jdbc.samples.moudles.user.repository.domain.entity;
 
 /**
  * @author kevin
