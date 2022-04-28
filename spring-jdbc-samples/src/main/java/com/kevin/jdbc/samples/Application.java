@@ -3,6 +3,8 @@ package com.kevin.jdbc.samples;
 import com.kevin.jdbc.samples.configuration.ApplicationConfiguration;
 import com.kevin.jdbc.samples.moudles.user.repository.domain.entity.UserEntity;
 import com.kevin.jdbc.samples.moudles.user.service.UserService;
+import org.springframework.aop.framework.AopContext;
+import org.springframework.aop.support.AopUtils;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.logging.Logger;

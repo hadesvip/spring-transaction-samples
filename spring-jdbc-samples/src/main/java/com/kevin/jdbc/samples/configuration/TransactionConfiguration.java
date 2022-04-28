@@ -1,10 +1,8 @@
 package com.kevin.jdbc.samples.configuration;
 
-import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -17,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @Order(1)
-@EnableTransactionManagement
+@EnableTransactionManagement(proxyTargetClass = true)
 public class TransactionConfiguration {
 
 
