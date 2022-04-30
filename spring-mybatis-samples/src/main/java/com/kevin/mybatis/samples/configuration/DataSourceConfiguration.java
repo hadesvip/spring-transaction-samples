@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -26,6 +27,7 @@ import java.io.IOException;
  */
 @Configuration
 @EnableTransactionManagement
+@PropertySource("classpath:jdbc.properties")
 public class DataSourceConfiguration implements EnvironmentAware, InitializingBean, ApplicationContextAware {
 
     @Resource
@@ -35,10 +37,6 @@ public class DataSourceConfiguration implements EnvironmentAware, InitializingBe
 
     @Bean(name = "dataSource", destroyMethod = "close")
     public HikariDataSource dataSource() {
-//        return new EmbeddedDatabaseBuilder()
-//                .setType(EmbeddedDatabaseType.H2)
-//                .addScript("schema.sql")
-//                .build();
         HikariDataSource hikariDataSource = new HikariDataSource();
         hikariDataSource.setDriverClassName(environment.getProperty("spring.jdbc.driver-class-name",
                 "org.h2.Driver"));

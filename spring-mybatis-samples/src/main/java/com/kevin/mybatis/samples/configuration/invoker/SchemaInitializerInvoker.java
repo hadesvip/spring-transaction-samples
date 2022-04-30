@@ -1,6 +1,8 @@
 package com.kevin.mybatis.samples.configuration.invoker;
 
+import com.kevin.mybatis.samples.configuration.event.DataSourceSchemaCreatedEvent;
 import com.kevin.mybatis.samples.configuration.properties.DataSourceProperties;
+import org.springframework.context.ApplicationListener;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.config.SortedResourcesFactoryBean;
@@ -14,7 +16,7 @@ import java.util.List;
  *
  * @author kevin
  */
-public class SchemaInitializerInvoker {
+public class SchemaInitializerInvoker implements ApplicationListener<DataSourceSchemaCreatedEvent> {
 
     private final DataSourceProperties properties;
 
@@ -50,4 +52,8 @@ public class SchemaInitializerInvoker {
         }
     }
 
+    @Override
+    public void onApplicationEvent(DataSourceSchemaCreatedEvent event) {
+
+    }
 }

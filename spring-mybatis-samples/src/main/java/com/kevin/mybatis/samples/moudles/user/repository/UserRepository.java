@@ -1,4 +1,4 @@
-package com.kevin.mybatis.samples.modular.user.repository;
+package com.kevin.mybatis.samples.moudles.user.repository;
 
 import org.springframework.stereotype.Repository;
 

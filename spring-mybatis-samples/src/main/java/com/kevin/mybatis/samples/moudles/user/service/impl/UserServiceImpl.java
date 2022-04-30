@@ -1,7 +1,7 @@
-package com.kevin.mybatis.samples.modular.user.service.impl;
+package com.kevin.mybatis.samples.moudles.user.service.impl;
 
-import com.kevin.mybatis.samples.modular.user.domain.entity.UserEntity;
-import com.kevin.mybatis.samples.modular.user.service.UserService;
+import com.kevin.mybatis.samples.moudles.user.domain.entity.UserEntity;
+import com.kevin.mybatis.samples.moudles.user.service.UserService;
 import org.springframework.stereotype.Service;
 
 /**

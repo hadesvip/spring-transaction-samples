@@ -1,16 +1,15 @@
 package com.kevin.mybatis.samples;
 
 import com.kevin.mybatis.samples.configuration.ApplicationConfiguration;
-import com.kevin.mybatis.samples.modular.user.service.UserService;
-import org.springframework.context.Lifecycle;
+import com.kevin.mybatis.samples.moudles.user.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.logging.Logger;
 
-/**
+/** 入口
  * @author kevin
  */
-public class Application {
+public class MybatisApplication {
 
     public static void main(String[] args) {
         Logger.getGlobal().info("=====项目开始启动=====");
