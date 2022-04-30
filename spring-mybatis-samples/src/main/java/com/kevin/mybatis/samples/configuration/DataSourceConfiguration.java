@@ -5,7 +5,10 @@ import com.kevin.mybatis.samples.configuration.properties.DataSourceProperties;
 import com.zaxxer.hikari.HikariDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,17 +20,18 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * @author kevin
  */
 @Configuration
 @EnableTransactionManagement
-public class DataSourceConfiguration implements EnvironmentAware, InitializingBean {
+public class DataSourceConfiguration implements EnvironmentAware, InitializingBean, ApplicationContextAware {
 
     @Resource
     private Environment environment;
+
+    private ApplicationContext applicationContext;
 
     @Bean(name = "dataSource", destroyMethod = "close")
     public HikariDataSource dataSource() {
@@ -89,7 +93,7 @@ public class DataSourceConfiguration implements EnvironmentAware, InitializingBe
 
     private SchemaInitializerInvoker getSchemaInitializerInvoker() {
         DataSourceProperties dataSourceProperties = buildDataSourceProperties();
-        return new SchemaInitializerInvoker(dataSourceProperties);
+        return new SchemaInitializerInvoker(dataSourceProperties, applicationContext);
     }
 
     private DataSourceProperties buildDataSourceProperties() {
@@ -102,5 +106,10 @@ public class DataSourceConfiguration implements EnvironmentAware, InitializingBe
         String jdbcSchema = environment.getProperty("spring.jdbc.schema");
 
         return new DataSourceProperties(driverClassName, jdbcUrl, userName, password, jdbcSchema);
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
     }
 }

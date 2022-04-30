@@ -23,6 +23,7 @@ public class SchemaInitializerInvoker {
 
     public SchemaInitializerInvoker(DataSourceProperties properties, ResourceLoader resourceLoader) {
         this.properties = properties;
+        this.resourceLoader = resourceLoader;
     }
 
     public void initSchema() {
