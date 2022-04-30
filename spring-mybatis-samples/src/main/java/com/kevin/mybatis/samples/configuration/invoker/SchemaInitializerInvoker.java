@@ -13,6 +13,7 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * 数据源初始化
@@ -35,13 +36,14 @@ public class SchemaInitializerInvoker implements ApplicationListener<DataSourceS
         String jdbcSchema = properties.getJdbcSchema();
         List<Resource> resourceList = getResourceList(jdbcSchema);
         runScripts(resourceList);
+        Logger.getGlobal().info("schema SQL初始化成功...");
     }
 
     void runScripts(List<Resource> resourceList) {
         ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
         populator.setContinueOnError(false);
         populator.setSqlScriptEncoding("UTF-8");
-        populator.addScripts((Resource[]) (resourceList.toArray()));
+        resourceList.forEach(populator::addScript);
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setDriverClassName(properties.getDriverClassName());
         dataSource.setJdbcUrl(properties.getUrl());
