@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS t_user;
 CREATE TABLE t_user
 (
-    user_id      INTEGER PRIMARY KEY,
+    user_id      INTEGER PRIMARY KEY auto_increment,
     user_no      VARCHAR(64),
     state        VARCHAR(32),
     user_name    VARCHAR(32),

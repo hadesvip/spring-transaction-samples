@@ -67,7 +67,7 @@ public class DataSourceConfiguration implements EnvironmentAware, InitializingBe
     @Bean(name = "mapperScannerConfigurer")
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("com.kevin.mybatis.samples.moudular.**.repository");
+        mapperScannerConfigurer.setBasePackage("com.kevin.mybatis.samples.modules.**.repository");
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactoryBean");
         return mapperScannerConfigurer;
     }

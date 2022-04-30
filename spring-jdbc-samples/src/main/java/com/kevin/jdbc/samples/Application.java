@@ -1,8 +1,8 @@
 package com.kevin.jdbc.samples;
 
 import com.kevin.jdbc.samples.configuration.ApplicationConfiguration;
-import com.kevin.jdbc.samples.modulars.user.repository.domain.entity.UserEntity;
-import com.kevin.jdbc.samples.modulars.user.service.UserService;
+import com.kevin.jdbc.samples.modules.user.repository.domain.entity.UserEntity;
+import com.kevin.jdbc.samples.modules.user.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.logging.Logger;
