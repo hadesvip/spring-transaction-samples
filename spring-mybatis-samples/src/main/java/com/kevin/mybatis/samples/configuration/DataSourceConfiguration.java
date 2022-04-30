@@ -19,7 +19,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StringUtils;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 
 /**
@@ -30,20 +29,20 @@ import java.io.IOException;
 @PropertySource("classpath:jdbc.properties")
 public class DataSourceConfiguration implements EnvironmentAware, InitializingBean, ApplicationContextAware {
 
-    @Resource
     private Environment environment;
 
     private ApplicationContext applicationContext;
 
+    private DataSourceProperties dataSourceProperties;
+
+
     @Bean(name = "dataSource", destroyMethod = "close")
     public HikariDataSource dataSource() {
         HikariDataSource hikariDataSource = new HikariDataSource();
-        hikariDataSource.setDriverClassName(environment.getProperty("spring.jdbc.driver-class-name",
-                "org.h2.Driver"));
-        hikariDataSource.setJdbcUrl(environment.getProperty("spring.jdbc.url",
-                "jdbc:h2:mem:transaction_db;MODE=MySQL;DB_CLOSE_DELAY=-1;"));
-        hikariDataSource.setUsername(environment.getProperty("spring.jdbc.username", "root"));
-        hikariDataSource.setPassword(environment.getProperty("spring.jdbc.password", "123456"));
+        hikariDataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
+        hikariDataSource.setJdbcUrl(dataSourceProperties.getUrl());
+        hikariDataSource.setUsername(dataSourceProperties.getUsername());
+        hikariDataSource.setPassword(dataSourceProperties.getPassword());
         return hikariDataSource;
     }
 
@@ -80,7 +79,14 @@ public class DataSourceConfiguration implements EnvironmentAware, InitializingBe
     }
 
     @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+
+
+    @Override
     public void afterPropertiesSet() {
+        dataSourceProperties = buildDataSourceProperties();
         String schema = environment.getProperty("spring.jdbc.schema");
         //初始化schema
         if (StringUtils.hasLength(schema)) {
@@ -90,7 +96,6 @@ public class DataSourceConfiguration implements EnvironmentAware, InitializingBe
     }
 
     private SchemaInitializerInvoker getSchemaInitializerInvoker() {
-        DataSourceProperties dataSourceProperties = buildDataSourceProperties();
         return new SchemaInitializerInvoker(dataSourceProperties, applicationContext);
     }
 
@@ -106,8 +111,5 @@ public class DataSourceConfiguration implements EnvironmentAware, InitializingBe
         return new DataSourceProperties(driverClassName, jdbcUrl, userName, password, jdbcSchema);
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
+
 }

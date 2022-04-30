@@ -4,7 +4,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author kevin
+ * @author wangyong
  */
 @Configuration
 @ComponentScan(basePackages = {"com.kevin.mybatis.samples"})
