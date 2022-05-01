@@ -4,8 +4,10 @@ import com.kevin.mybatis.samples.configuration.ApplicationConfiguration;
 import com.kevin.mybatis.samples.modules.trade.domain.entity.TradeEntity;
 import com.kevin.mybatis.samples.modules.trade.service.TradeService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -19,7 +21,9 @@ import java.util.logging.Logger;
  *
  * @author kevin
  */
-@SpringJUnitConfig(classes = ApplicationConfiguration.class)
+//@SpringJUnitConfig(classes = ApplicationConfiguration.class)
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {ApplicationConfiguration.class})
 public class TradeServiceTests {
 
 
@@ -40,7 +44,7 @@ public class TradeServiceTests {
         tradeEntity.setTradeDateTime(new Date());
         try {
             tradeService.saveTrade(tradeEntity);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
 

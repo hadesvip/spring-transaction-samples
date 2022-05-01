@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS t_user;
-CREATE TABLE t_user
-(
+create table if not exists t_user(
     user_id      INTEGER PRIMARY KEY auto_increment,
     user_no      VARCHAR(64),
     state        VARCHAR(32),
@@ -9,8 +7,7 @@ CREATE TABLE t_user
     email        VARCHAR(64)
 );
 
-
-CREATE TABLE t_trade(
+create table if not exists t_trade(
     trade_id        INTEGER PRIMARY KEY auto_increment,
     trade_no        VARCHAR(64),
     user_id         INTEGER,
