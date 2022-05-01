@@ -11,7 +11,7 @@ CREATE TABLE t_user
 
 
 CREATE TABLE t_trade(
-    trade_id        INTEGER PRIMARY KEY,
+    trade_id        INTEGER PRIMARY KEY auto_increment,
     trade_no        VARCHAR(64),
     user_id         INTEGER,
     state           VARCHAR(32),

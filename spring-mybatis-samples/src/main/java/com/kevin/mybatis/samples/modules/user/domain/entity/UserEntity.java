@@ -7,7 +7,7 @@ import com.google.gson.Gson;
  */
 public class UserEntity {
 
-    private Integer userId;
+    private Long userId;
 
     private String userNo;
 
@@ -19,11 +19,11 @@ public class UserEntity {
 
     private String email;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
