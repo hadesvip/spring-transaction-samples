@@ -8,6 +8,7 @@
     <modules>
         <module>spring-jdbc-samples</module>
         <module>spring-mybatis-samples</module>
+        <module>spring-aop-samples</module>
     </modules>
     <packaging>pom</packaging>
     <name>spring-transaction-samples</name>
