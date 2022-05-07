@@ -3,14 +3,14 @@ package com.kevin.aop.samples.utils.proxy;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 /**
- * 生成代理类代码
+ * 生成代理类工具
  *
  * @author kevin
  */
 public final class ProxyUtils {
-
 
     public static boolean saveProxyClass(String path, String proxyClassName, Class[] interfaces) {
         if (proxyClassName == null || path == null) {
@@ -33,7 +33,8 @@ public final class ProxyUtils {
                 e.printStackTrace();
             }
         }
+        Logger.getGlobal().info("=======生成成功========");
         return false;
-    }
 
+    }
 }

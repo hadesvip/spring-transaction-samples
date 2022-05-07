@@ -17,26 +17,35 @@ import java.util.logging.Logger;
 public class JDKProxyMain {
 
     public static void main(String[] args) {
-
         UserService target = new UserServiceImpl();
-
-        Object proxy = Proxy.newProxyInstance(UserService.class.getClassLoader(), new Class[]{UserService.class},
-                new InvocationHandler() {
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        String info = String.format("【invoke method】 proxyClass:%s,methodName:%s,args:%s",
-                                proxy.getClass(),
-                                method.getName(), args);
-                        Logger.getGlobal().info(info);
-                        Logger.getGlobal().info("【invoke method before】");
-                        Object result = method.invoke(target, args);
-                        Logger.getGlobal().info("【invoke method after】");
-                        return result;
-                    }
-                });
-
+        Object proxy = Proxy.newProxyInstance(UserService.class.getClassLoader(),
+                new Class[]{UserService.class}, new UserServiceInvocationHandler(target));
         UserService userService = (UserService) proxy;
         UserEntity userEntity = userService.getByUserId(1);
         Logger.getGlobal().info("userEntity:" + userEntity);
+    }
+}
+
+/**
+ * 中介类
+ */
+class UserServiceInvocationHandler implements InvocationHandler {
+
+    private final UserService userService;
+
+    public UserServiceInvocationHandler(UserService userService) {
+        this.userService = userService;
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        String info = String.format("【invoke method】 proxyClass:%s,methodName:%s,args:%s",
+                proxy.getClass(),
+                method.getName(), args);
+        Logger.getGlobal().info(info);
+        Logger.getGlobal().info("【invoke method before】");
+        Object result = method.invoke(userService, args);
+        Logger.getGlobal().info("【invoke method after】");
+        return result;
     }
 }
