@@ -1,4 +1,4 @@
-package com.kevin.aop.samples.modules.proxy.cglib;
+package com.kevin.aop.samples.modules.proxy.dynamic.cglib;
 
 import com.kevin.aop.samples.modules.user.domain.entity.UserEntity;
 import com.kevin.aop.samples.modules.user.service.UserService;

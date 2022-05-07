@@ -1,4 +1,4 @@
-package com.kevin.aop.samples.modules.proxy.jdk;
+package com.kevin.aop.samples.modules.proxy.dynamic.jdk;
 
 import com.kevin.aop.samples.modules.user.domain.entity.UserEntity;
 import com.kevin.aop.samples.modules.user.service.UserService;
