@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author kevin
  */
-public class JdkProxyRunner {
+public class JDKProxyRunner {
 
     public static void main(String[] args) {
 
@@ -24,6 +24,10 @@ public class JdkProxyRunner {
                 new InvocationHandler() {
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        String info = String.format("【invoke method】 proxyClass:%s,methodName:%s,args:%s",
+                                proxy.getClass(),
+                                method.getName(), args);
+                        Logger.getGlobal().info(info);
                         Logger.getGlobal().info("【invoke method before】");
                         Object result = method.invoke(target, args);
                         Logger.getGlobal().info("【invoke method after】");
