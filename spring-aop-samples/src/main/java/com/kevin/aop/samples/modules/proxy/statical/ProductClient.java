@@ -15,8 +15,5 @@ public class ProductClient {
 
         productOperator.expand();
 
-
     }
-
-
 }
