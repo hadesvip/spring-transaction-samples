@@ -10,11 +10,11 @@ import java.lang.reflect.Proxy;
 import java.util.logging.Logger;
 
 /**
- * TODO 用一句话描述这个类的作用
+ * JDK动态代理实现
  *
  * @author kevin
  */
-public class JDKProxyRunner {
+public class JDKProxyMain {
 
     public static void main(String[] args) {
 
