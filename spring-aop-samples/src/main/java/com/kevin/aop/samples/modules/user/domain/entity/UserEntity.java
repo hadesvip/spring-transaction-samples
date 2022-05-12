@@ -32,6 +32,9 @@ public class UserEntity {
         this.userName = userName;
     }
 
+    public UserEntity() {
+    }
+
     @Override
     public String toString() {
         return "{"
