@@ -78,7 +78,6 @@ public class ApplicationConfiguration {
 
     @Bean
     public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
-        DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
-        return defaultAdvisorAutoProxyCreator;
+        return new DefaultAdvisorAutoProxyCreator();
     }
 }
